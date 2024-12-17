@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float m_speed;
     [SerializeField] float m_jumpForce;
+    [SerializeField] float m_controllerCursorSpeed;
     [SerializeField] InputActionReference m_moveInput;
+    [SerializeField] InputActionReference m_cursorInput;
 
     public bool m_HasJumped;
 
@@ -23,7 +25,11 @@ public class PlayerMovement : MonoBehaviour
     {
 
         Move();
-        
+
+        if (Gamepad.all.Count > 0)
+        {
+            MoveCursorWithGamepad();
+        }
 
         if (m_lookLeft)
         {
@@ -70,5 +76,23 @@ public class PlayerMovement : MonoBehaviour
     public void Pause()
     {
         Settings.Instance.settings.m_Paused = !Settings.Instance.settings.m_Paused;
+    }
+
+    public void MoveCursorWithGamepad()
+    {
+        Vector2 gamepadInput = m_cursorInput.action.ReadValue<Vector2>();
+
+        float scaleFactor = m_controllerCursorSpeed / 100;
+
+        Vector3 currentCursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        Vector3 newCursorPosition = currentCursorPosition + new Vector3(
+            gamepadInput.x * scaleFactor,
+            gamepadInput.y * scaleFactor,
+            0f
+        );
+
+        // This makes the cursor move with a controller (so you can use the wormhole on controller too)
+        Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(newCursorPosition));
     }
 }
