@@ -3186,6 +3186,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62f4590e8fdab64294b64d2c1b25e60, type: 3}
+--- !u!1 &1348503442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8814708215266549028, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+  m_PrefabInstance: {fileID: 2884928988742960774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1348503448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348503442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c976b9b231b1290498fb9c8727293a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1721036254
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,10 +3412,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: da6681eb-d245-4ada-8113-07937bd34b49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: 'Player/Attack[/Keyboard/enter]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1348503448}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAttack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999197110697341612, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8814708215266549028, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1348503448}
   m_SourcePrefab: {fileID: 100100000, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
