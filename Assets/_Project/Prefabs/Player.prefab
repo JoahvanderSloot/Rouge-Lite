@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 210237960128069643}
   - component: {fileID: 6257253679585065063}
   - component: {fileID: 7800592579246566596}
+  - component: {fileID: 3067618031026038955}
   - component: {fileID: 2567371426753272447}
   - component: {fileID: 8999197110697341612}
   m_Layer: 0
@@ -311,6 +312,19 @@ MonoBehaviour:
   m_moveInput: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_cursorInput: {fileID: -5109320975626823177, guid: fd667d2feef61e642add63b129af0a6a, type: 3}
   m_HasJumped: 0
+  m_Rb: {fileID: 0}
+--- !u!114 &3067618031026038955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814708215266549028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c976b9b231b1290498fb9c8727293a83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2567371426753272447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +387,7 @@ MonoBehaviour:
       - m_Target: {fileID: 7800592579246566596}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -402,7 +416,7 @@ MonoBehaviour:
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2567371426753272447}
+      - m_Target: {fileID: 3067618031026038955}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 1

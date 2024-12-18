@@ -1,6 +1,7 @@
-using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,16 +10,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float m_controllerCursorSpeed;
     [SerializeField] InputActionReference m_moveInput;
     [SerializeField] InputActionReference m_cursorInput;
+    Coroutine m_jumpLoop;
 
     public bool m_HasJumped;
 
     bool m_lookLeft;
 
-    Rigidbody2D m_rb;
+    public Rigidbody2D m_Rb;
 
     private void Start()
     {
-        m_rb = GetComponent<Rigidbody2D>();
+        m_Rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 _data = m_moveInput.action.ReadValue<Vector2>();
 
-            m_rb.linearVelocity = new Vector2(_data.x * m_speed, m_rb.linearVelocity.y);
+            m_Rb.linearVelocity = new Vector2(_data.x * m_speed, m_Rb.linearVelocity.y);
 
             if (_data.x > 0)
             {
@@ -64,12 +66,37 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Jump()
+    public void Jump(CallbackContext _context)
     {
-        if(!m_HasJumped && !Settings.Instance.settings.m_Paused)
+        if (_context.performed)
         {
-            m_rb.linearVelocity = new Vector2(m_rb.linearVelocity.x, m_rb.linearVelocity.y + m_jumpForce);
-            m_HasJumped = true;
+            if (m_jumpLoop == null)
+            {
+                m_jumpLoop = StartCoroutine(JumpLoop());
+            }
+        }
+        else if (_context.canceled)
+        {
+            if (m_jumpLoop != null)
+            {
+                StopCoroutine(m_jumpLoop);
+                m_jumpLoop = null;
+            }
+        }
+    }
+
+    IEnumerator JumpLoop()
+    {
+        while (true)
+        {
+            if (!m_HasJumped && !Settings.Instance.settings.m_Paused)
+            {
+                m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_jumpForce);
+                m_HasJumped = true;
+
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return null;
         }
     }
 
