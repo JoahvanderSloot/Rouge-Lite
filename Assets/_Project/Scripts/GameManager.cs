@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         m_movement = m_player.GetComponent<PlayerMovement>();
         m_currentItem = Item.Pickaxe;
+        Settings.Instance.settings.m_Paused = false;
     }
 
     private void Update()

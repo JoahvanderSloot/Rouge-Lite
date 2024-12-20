@@ -11,21 +11,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] InputActionReference m_moveInput;
     [SerializeField] InputActionReference m_cursorInput;
     Coroutine m_jumpLoop;
-
     public bool m_HasJumped;
-
     bool m_lookLeft;
-
-    public Rigidbody2D m_Rb;
+    [HideInInspector] public Rigidbody2D m_Rb;
+    public float m_HP;
 
     private void Start()
     {
         m_Rb = GetComponent<Rigidbody2D>();
+        m_speed += Settings.Instance.settings.m_PlayerSpeed;
+        m_HP = Settings.Instance.settings.m_PlayerHP;
     }
 
     private void Update()
     {
-
         Move();
 
         if (Gamepad.all.Count > 0)
@@ -40,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if(m_HP <= 0)
+        {
+            Debug.Log("Game Over");
         }
     }
 

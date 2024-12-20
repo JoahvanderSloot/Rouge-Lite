@@ -32,8 +32,8 @@ public class CameraScript : MonoBehaviour
             _targetOffset = m_offset - _movementDirection.normalized * m_offsetDistance;
         }
 
-        Vector3 targetPosition = m_playerTransform.position + _targetOffset;
+        Vector3 _targetPosition = m_playerTransform.position + _targetOffset;
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, m_followSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, _targetPosition, m_followSpeed * Time.deltaTime);
     }
 }

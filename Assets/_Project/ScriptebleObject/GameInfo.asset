@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b82f6e781a2d34793ddeecb095bcab, type: 3}
   m_Name: GameInfo
   m_EditorClassIdentifier: 
-  m_Paused: 1
+  m_Paused: 0
+  m_PlayerHP: 100
+  m_PlayerSpeed: 0
+  m_PlayerMiningSpeed: 0
+  m_PlayerDamage: 0
