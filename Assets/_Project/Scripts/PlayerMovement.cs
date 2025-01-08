@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] InputActionReference m_cursorInput;
     Coroutine m_jumpLoop;
     public bool m_HasJumped;
+    public bool m_IsOnLadder;
     bool m_lookLeft;
     [HideInInspector] public Rigidbody2D m_Rb;
     public float m_HP;
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (_context.canceled)
         {
-            if (m_jumpLoop != null)
+            if (m_jumpLoop != null && !m_IsOnLadder)
             {
                 StopCoroutine(m_jumpLoop);
                 m_jumpLoop = null;
@@ -93,12 +94,19 @@ public class PlayerMovement : MonoBehaviour
     {
         while (true)
         {
-            if (!m_HasJumped && !Settings.Instance.settings.m_Paused)
+            if (!m_IsOnLadder)
+            {
+                if (!m_HasJumped && !Settings.Instance.settings.m_Paused)
+                {
+                    m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_jumpForce);
+                    m_HasJumped = true;
+
+                    yield return new WaitForSeconds(0.1f);
+                }
+            }
+            else
             {
                 m_Rb.linearVelocity = new Vector2(m_Rb.linearVelocity.x, m_jumpForce);
-                m_HasJumped = true;
-
-                yield return new WaitForSeconds(0.1f);
             }
             yield return null;
         }
@@ -123,7 +131,6 @@ public class PlayerMovement : MonoBehaviour
             0f
         );
 
-        // This makes the cursor move with a controller (so you can use the wormhole on controller too)
         Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(newCursorPosition));
     }
 }

@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 6257253679585065063}
   - component: {fileID: 7800592579246566596}
   - component: {fileID: 3067618031026038955}
-  - component: {fileID: 2567371426753272447}
   - component: {fileID: 8999197110697341612}
   m_Layer: 0
   m_Name: Player
@@ -258,7 +257,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 30f79267ac847f147854c80b9f1650f2, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -313,6 +312,7 @@ MonoBehaviour:
   m_cursorInput: {fileID: -5109320975626823177, guid: fd667d2feef61e642add63b129af0a6a, type: 3}
   m_HasJumped: 0
   m_Rb: {fileID: 0}
+  m_HP: 0
 --- !u!114 &3067618031026038955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,18 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c976b9b231b1290498fb9c8727293a83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2567371426753272447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8814708215266549028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c976b9b231b1290498fb9c8727293a83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_CrossBowRotation: {fileID: 0}
+  m_arrowPref: {fileID: 7792065394201831919, guid: bf56dfec84fe8de4d9659ef9683e3a59, type: 3}
 --- !u!114 &8999197110697341612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,7 +369,19 @@ MonoBehaviour:
     m_ActionId: b2063f63-32b2-4457-87ca-178a3db752e2
     m_ActionName: 'Player/Move[/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7800592579246566596}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: MoveCursorWithGamepad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 31f29ba8-00cd-4f61-b060-61db0866b4cb
     m_ActionName: Player/Cursor
   - m_PersistentCalls:
@@ -419,7 +421,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3067618031026038955}
         m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
         m_MethodName: Attack
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

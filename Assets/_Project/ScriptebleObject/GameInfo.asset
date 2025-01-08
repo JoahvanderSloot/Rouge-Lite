@@ -15,5 +15,5 @@ MonoBehaviour:
   m_Paused: 0
   m_PlayerHP: 100
   m_PlayerSpeed: 0
-  m_PlayerMiningSpeed: 0
-  m_PlayerDamage: 0
+  m_PlayerMiningSpeed: 1
+  m_PlayerDamage: 1
