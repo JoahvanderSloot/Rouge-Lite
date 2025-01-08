@@ -24,7 +24,10 @@ public class IconHover : MonoBehaviour
         else
         {
             Block _blockScript = collision.gameObject.GetComponent<Block>();
-            _blockScript.m_IsHover = false;
+            if (_blockScript != null)
+            {
+                _blockScript.m_IsHover = false;
+            }
         }
     }
 

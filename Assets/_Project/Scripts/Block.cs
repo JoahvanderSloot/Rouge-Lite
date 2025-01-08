@@ -31,6 +31,7 @@ public class Block : MonoBehaviour
             m_BrokeBlock = true;
             m_box.isTrigger = true;
             m_break.SetActive(false);
+            gameObject.layer = default;
             ChoseDrop();
         }
 

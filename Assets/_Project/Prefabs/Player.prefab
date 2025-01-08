@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 472198769985611820}
   - component: {fileID: 1398122884503806668}
   - component: {fileID: 8170708688513018187}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.1}
+  m_Size: {x: 0.4, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &8170708688513018187
 MonoBehaviour:
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7667456387927788102}
   - component: {fileID: 5943745332585254685}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Kiyreon Earthfoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,11 +192,11 @@ GameObject:
   m_Component:
   - component: {fileID: 277216481638796384}
   - component: {fileID: 210237960128069643}
-  - component: {fileID: 6257253679585065063}
   - component: {fileID: 7800592579246566596}
   - component: {fileID: 3067618031026038955}
   - component: {fileID: 8999197110697341612}
-  m_Layer: 0
+  - component: {fileID: 2964079116255084216}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -247,52 +247,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6257253679585065063
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8814708215266549028}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.15, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.125, y: 2.3125}
-    newSize: {x: 0.5, y: 0.37}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &7800592579246566596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +265,7 @@ MonoBehaviour:
   m_moveInput: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_cursorInput: {fileID: -5109320975626823177, guid: fd667d2feef61e642add63b129af0a6a, type: 3}
   m_HasJumped: 0
+  m_IsOnLadder: 0
   m_Rb: {fileID: 0}
   m_HP: 0
 --- !u!114 &3067618031026038955
@@ -327,6 +282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CrossBowRotation: {fileID: 0}
   m_arrowPref: {fileID: 7792065394201831919, guid: bf56dfec84fe8de4d9659ef9683e3a59, type: 3}
+  m_ignoreRaycast:
+    serializedVersion: 2
+    m_Bits: 4
 --- !u!114 &8999197110697341612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,3 +395,40 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!70 &2964079116255084216
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814708215266549028}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.15, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0

@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5501305383433539750}
   - component: {fileID: 6324106684362565907}
   - component: {fileID: 6037693438887136718}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_ladder: {fileID: 7168924902862451775}
   m_hover: {fileID: 6571802805214175508}
   m_break: {fileID: 6443584767089990127}
-  m_MaxHP: 3
+  m_MaxHP: 1
   m_HP: 0
   m_IsHover: 0
   m_BrokeBlock: 0
@@ -156,7 +156,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 30f79267ac847f147854c80b9f1650f2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
