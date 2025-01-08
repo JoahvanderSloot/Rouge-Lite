@@ -69,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, 0);
             }
         }
+
+        if(m_Rb.linearVelocityY > 16)
+        {
+            m_Rb.linearVelocityY = 16;
+        }
     }
 
     public void Jump(CallbackContext _context)
@@ -82,11 +87,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (_context.canceled)
         {
-            if (m_jumpLoop != null && !m_IsOnLadder)
-            {
-                StopCoroutine(m_jumpLoop);
-                m_jumpLoop = null;
-            }
+            StopCoroutine(m_jumpLoop);
+            m_jumpLoop = null;
         }
     }
 

@@ -141,7 +141,7 @@ MonoBehaviour:
   m_ladder: {fileID: 7168924902862451775}
   m_hover: {fileID: 6571802805214175508}
   m_break: {fileID: 6443584767089990127}
-  m_MaxHP: 1
+  m_MaxHP: 3
   m_HP: 0
   m_IsHover: 0
   m_BrokeBlock: 0
