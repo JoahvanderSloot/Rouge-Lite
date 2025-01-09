@@ -2342,6 +2342,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3067618031026038955, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
+      propertyPath: m_disableDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067618031026038955, guid: 7bec7dafc56516b45a6f2e472d408464, type: 3}
       propertyPath: m_CrossBowRotation
       value: 
       objectReference: {fileID: 444758368}

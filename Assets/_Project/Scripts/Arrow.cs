@@ -24,4 +24,12 @@ public class Arrow : MonoBehaviour
 
         m_rb.AddForce(_shootDirection * m_shootForce, ForceMode2D.Impulse);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == 7)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
