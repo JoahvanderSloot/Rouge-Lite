@@ -8,20 +8,30 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] int m_rows;
     [SerializeField] int m_columns;
     [SerializeField] float m_spacing;
+    Transform m_player;
+    [SerializeField] float m_expandThreshold;
+
+    int m_currentBottomRow;
 
     private void Start()
     {
+        m_player = GameObject.FindGameObjectWithTag("Player").transform;
+
         GenerateGrid();
-        GenerateBedrockRim();
+        GenerateInitialBedrockRim();
+        m_currentBottomRow = m_rows;
+    }
+
+    private void Update()
+    {
+        CheckAndExpandLevel();
     }
 
     private void GenerateGrid()
     {
         float _gridWidth = (m_columns - 1) * m_spacing;
-        float _gridHeight = (m_rows - 1) * m_spacing;
 
         Vector3 _topMiddlePosition = Vector3.zero;
-
         Vector3 _topLeftPosition = _topMiddlePosition - new Vector3(_gridWidth / 2, 0, 0);
 
         for (int _row = 0; _row < m_rows; _row++)
@@ -29,19 +39,15 @@ public class LevelGenerator : MonoBehaviour
             for (int _col = 0; _col < m_columns; _col++)
             {
                 Vector3 _blockPosition = _topLeftPosition + new Vector3(_col * m_spacing, -_row * m_spacing, 0);
-
                 Instantiate(m_block, _blockPosition, Quaternion.identity, transform);
             }
         }
     }
 
-    private void GenerateBedrockRim()
+    private void GenerateInitialBedrockRim()
     {
         float _gridWidth = (m_columns - 1) * m_spacing;
-        float _gridHeight = (m_rows - 1) * m_spacing;
-
         Vector3 _topMiddlePosition = Vector3.zero;
-
         Vector3 _topLeftPosition = _topMiddlePosition - new Vector3(_gridWidth / 2, 0, 0);
 
         for (int _row = 0; _row <= m_rows; _row++)
@@ -60,11 +66,35 @@ public class LevelGenerator : MonoBehaviour
                 Instantiate(m_bedrock, _rightPosition, Quaternion.identity, transform);
             }
         }
+    }
 
-        for (int _col = -1; _col <= m_columns; _col++)
+    private void CheckAndExpandLevel()
+    {
+        float _bottomY = -(m_currentBottomRow * m_spacing);
+        if (m_player.position.y - _bottomY <= m_expandThreshold)
         {
-            Vector3 _bottomPosition = _topLeftPosition + new Vector3(_col * m_spacing, -(m_rows * m_spacing), 0);
-            Instantiate(m_bedrock, _bottomPosition, Quaternion.identity, transform);
+            ExpandLevel();
         }
+    }
+
+    private void ExpandLevel()
+    {
+        float _gridWidth = (m_columns - 1) * m_spacing;
+        Vector3 _topMiddlePosition = Vector3.zero;
+        Vector3 _topLeftPosition = _topMiddlePosition - new Vector3(_gridWidth / 2, 0, 0);
+
+        for (int _col = 0; _col < m_columns; _col++)
+        {
+            Vector3 _blockPosition = _topLeftPosition + new Vector3(_col * m_spacing, -(m_currentBottomRow * m_spacing), 0);
+            Instantiate(m_block, _blockPosition, Quaternion.identity, transform);
+        }
+
+        Vector3 _leftBedrockPosition = _topLeftPosition + new Vector3(-m_spacing, -(m_currentBottomRow * m_spacing), 0);
+        Vector3 _rightBedrockPosition = _topLeftPosition + new Vector3((_gridWidth + m_spacing), -(m_currentBottomRow * m_spacing), 0);
+
+        Instantiate(m_bedrock, _leftBedrockPosition, Quaternion.identity, transform);
+        Instantiate(m_bedrock, _rightBedrockPosition, Quaternion.identity, transform);
+
+        m_currentBottomRow++;
     }
 }
