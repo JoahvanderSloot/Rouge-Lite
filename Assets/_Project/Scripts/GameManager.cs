@@ -10,6 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> m_mouseIcons;
     int m_currentIcon;
 
+    [Header("Gems")]
+    public int m_BlueGemCount;
+    public int m_GreenGemCount;
+    public int m_RedGemCount;
+    public int m_YellowGemCount;
+
     public enum Item
     {
         Pickaxe,
@@ -23,6 +29,11 @@ public class GameManager : MonoBehaviour
         m_movement = m_player.GetComponent<PlayerMovement>();
         m_currentItem = Item.Pickaxe;
         Settings.Instance.settings.m_Paused = false;
+
+        m_GreenGemCount = 0;
+        m_BlueGemCount = 0;
+        m_RedGemCount = 0;
+        m_YellowGemCount = 0;
     }
 
     private void Update()

@@ -12,7 +12,7 @@ public class Settings : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = FindObjectOfType<Settings>();
+                instance = FindFirstObjectByType<Settings>();
 
                 if (instance == null)
                 {

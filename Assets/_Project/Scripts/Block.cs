@@ -2,26 +2,49 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [Header("Own Atributes")]
     [SerializeField] GameObject m_brick;
     [SerializeField] GameObject m_ladder;
     [SerializeField] GameObject m_hover;
     [SerializeField] GameObject m_break;
     [SerializeField] float m_MaxHP;
+
     public float m_HP;
+
     [HideInInspector] public bool m_IsHover;
     [HideInInspector] public bool m_BrokeBlock;
     [HideInInspector] public bool m_LadderPlaced;
     BoxCollider2D m_box;
 
+    [Header("Player")]
+    GameObject m_player;
+    [HideInInspector] public bool m_PlayerInRange = false;
+    Transform m_playerTransform;
+    [SerializeField] float m_detectionRange;
+
+    [Header("Drops")]
+    bool m_hasDropped;
+    [SerializeField] GameObject m_pickupPref;
+
     private void Start()
     {
         m_box = GetComponent<BoxCollider2D>();
+        m_hasDropped = false;
         m_IsHover = false;
         m_BrokeBlock = false;
         m_LadderPlaced = false;
         m_box.isTrigger = false;
-        m_break.transform.localScale = Vector3.zero;
         m_HP = m_MaxHP;
+        UpdateBreakScale();
+        m_hover.SetActive(m_IsHover);
+        m_brick.SetActive(!m_BrokeBlock);
+        m_ladder.SetActive(m_LadderPlaced);
+
+        m_player = GameObject.FindWithTag("Player");
+        if (m_player != null)
+        {
+            m_playerTransform = m_player.transform;
+        }
     }
 
     private void Update()
@@ -32,14 +55,34 @@ public class Block : MonoBehaviour
             m_box.isTrigger = true;
             m_break.SetActive(false);
             gameObject.layer = default;
-            ChoseDrop();
+            if (!m_hasDropped)
+            {
+                ChoseDrop();
+            }
         }
 
-        UpdateBreakScale();
+        if (m_playerTransform != null)
+        {
+            float _distanceToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
+            m_PlayerInRange = _distanceToPlayer <= m_detectionRange;
+        }
+        else
+        {
+            m_PlayerInRange = false;
+        }
 
-        m_hover.SetActive(m_IsHover);
-        m_brick.SetActive(!m_BrokeBlock);
-        m_ladder.SetActive(m_LadderPlaced);
+        if (m_PlayerInRange)
+        {
+            UpdateBreakScale();
+
+            m_hover.SetActive(m_IsHover);
+            m_brick.SetActive(!m_BrokeBlock);
+            m_ladder.SetActive(m_LadderPlaced);
+        }
+        else
+        {
+            m_hover.SetActive(false);
+        }
     }
 
     private void UpdateBreakScale()
@@ -50,10 +93,18 @@ public class Block : MonoBehaviour
         m_break.transform.localScale = new Vector3(_scaleValue, _scaleValue, _scaleValue);
     }
 
-
     private void ChoseDrop()
     {
-        //drop logic
+        int _randomDrop = Random.Range(0, 5);
+        switch (_randomDrop)
+        {
+            case 0:
+                Instantiate(m_pickupPref, transform.position, Quaternion.identity);
+                break;
+            default:
+                break;
+        }
+        m_hasDropped = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,10 +124,7 @@ public class Block : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMovement _playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
-            if (m_LadderPlaced)
-            {
-                _playerMovement.m_IsOnLadder = false;
-            }
+            _playerMovement.m_IsOnLadder = false;
         }
     }
 }

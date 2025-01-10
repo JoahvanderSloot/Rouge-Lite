@@ -135,6 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shootForce: 15
+  m_ground:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!61 &1866207414915208619
 BoxCollider2D:
   m_ObjectHideFlags: 0

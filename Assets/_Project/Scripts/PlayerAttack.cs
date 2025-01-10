@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
         if (_hit.collider != null && _hit.collider.CompareTag("Brick"))
         {
             Block _block = _hit.collider.gameObject.GetComponent<Block>();
-            if (_block.m_IsHover)
+            if (_block.m_IsHover && _block.m_PlayerInRange)
             {
                 if(Settings.Instance.settings.m_PlayerMiningSpeed >= _block.m_HP)
                 {
@@ -62,9 +62,9 @@ public class PlayerAttack : MonoBehaviour
         if (_hit.collider != null && _hit.collider.CompareTag("Brick"))
         {
             Block _block = _hit.collider.gameObject.GetComponent<Block>();
-            if (_block.m_BrokeBlock)
+            if (_block.m_BrokeBlock && _block.m_PlayerInRange && !_block.m_LadderPlaced)
             {
-                _block.m_LadderPlaced = !_block.m_LadderPlaced;
+                _block.m_LadderPlaced = true;
             }
         }
     }
@@ -73,5 +73,19 @@ public class PlayerAttack : MonoBehaviour
     {
         Vector3 _arrowSpawn = new Vector3(transform.position.x, transform.position.y, -1);
         Instantiate(m_arrowPref, _arrowSpawn, Quaternion.identity);
+    }
+
+    public void RemoveLadder()
+    {
+        RaycastHit2D _hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, m_ignoreRaycast);
+
+        if (_hit.collider != null && _hit.collider.CompareTag("Brick"))
+        {
+            Block _block = _hit.collider.gameObject.GetComponent<Block>();
+            if (_block.m_BrokeBlock && _block.m_PlayerInRange && _block.m_LadderPlaced)
+            {
+                _block.m_LadderPlaced = false;
+            }
+        }
     }
 }
