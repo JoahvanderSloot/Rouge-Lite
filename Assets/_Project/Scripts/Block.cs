@@ -1,4 +1,6 @@
+using UnityEditor.Overlays;
 using UnityEngine;
+using static Unity.Collections.AllocatorManager;
 
 public class Block : MonoBehaviour
 {
@@ -34,11 +36,12 @@ public class Block : MonoBehaviour
         m_BrokeBlock = false;
         m_LadderPlaced = false;
         m_box.isTrigger = false;
-        m_HP = m_MaxHP;
-        UpdateBreakScale();
         m_hover.SetActive(m_IsHover);
         m_brick.SetActive(!m_BrokeBlock);
         m_ladder.SetActive(m_LadderPlaced);
+
+        NewHP();
+        UpdateBreakScale();
 
         m_player = GameObject.FindWithTag("Player");
         if (m_player != null)
@@ -48,7 +51,7 @@ public class Block : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
         if (m_HP <= 0)
         {
             m_BrokeBlock = true;
@@ -87,6 +90,12 @@ public class Block : MonoBehaviour
 
     private void UpdateBreakScale()
     {
+        if (m_MaxHP <= 1f)
+        {
+            m_break.transform.localScale = new Vector3(0f, 0f, 0f);
+            return;
+        }
+
         float _clampedHP = Mathf.Max(1f, m_HP);
         float _healthPercentage = (_clampedHP - 1f) / (m_MaxHP - 1f);
         float _scaleValue = Mathf.Lerp(2.5f, 0f, _healthPercentage);
@@ -106,6 +115,13 @@ public class Block : MonoBehaviour
         }
         m_hasDropped = true;
     }
+
+    private void NewHP()
+    {
+        m_MaxHP = Mathf.Max(1, Mathf.CeilToInt(-Settings.Instance.settings.m_YLevel / 5f));
+        m_HP = m_MaxHP;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

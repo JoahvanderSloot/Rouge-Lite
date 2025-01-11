@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         m_gameManager = FindFirstObjectByType<GameManager>();
+        Settings.Instance.settings.m_PlayerHP = Settings.Instance.settings.m_MaxHP;
     }
 
     public void Attack(CallbackContext _context)

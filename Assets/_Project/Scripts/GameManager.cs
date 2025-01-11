@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,6 +49,11 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
         }
 
+        Settings.Instance.settings.m_YLevel = Convert.ToInt32(m_player.transform.position.y);
+        if(Settings.Instance.settings.m_YLevel < Settings.Instance.settings.m_YHighScore)
+        {
+            Settings.Instance.settings.m_YHighScore = Settings.Instance.settings.m_YLevel;
+        }
     }
 
     private void Inventory()
