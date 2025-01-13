@@ -9,6 +9,9 @@ public class UiManager : MonoBehaviour
     [Header("General Objects")]
     GameManager m_gameManager;
     GameObject m_player;
+    [SerializeField] Slider m_HPslider;
+    [SerializeField] GameObject m_escMenu;
+    [SerializeField] ShopButtons m_shopOnAndOff;
 
     [Header("Main Items")]
     [SerializeField] List<Image> m_mainItems;
@@ -26,6 +29,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_hpText;
     [SerializeField] TextMeshProUGUI m_damageText;
     [SerializeField] TextMeshProUGUI m_miningSpeedText;
+
+    [SerializeField] TextMeshProUGUI m_healthBarrText;
 
     private void Start()
     {
@@ -47,5 +52,18 @@ public class UiManager : MonoBehaviour
         m_hpText.text = "Health<br>" + Settings.Instance.settings.m_MaxHP.ToString();
         m_damageText.text = "Strength<br>" + Settings.Instance.settings.m_PlayerDamage.ToString();
         m_miningSpeedText.text = "Pickaxe <br>Strength <br>" + Settings.Instance.settings.m_PlayerMiningSpeed.ToString();
+        m_healthBarrText.text = Settings.Instance.settings.m_PlayerHP.ToString() + "/" + Settings.Instance.settings.m_MaxHP.ToString();
+
+        m_HPslider.value = Settings.Instance.settings.m_PlayerHP;
+        m_HPslider.maxValue = Settings.Instance.settings.m_MaxHP;
+
+        if (!m_shopOnAndOff.m_ShopIsOpen)
+        {
+            m_escMenu.SetActive(Settings.Instance.settings.m_Paused);
+        }
+        else
+        {
+            m_escMenu.SetActive(false);
+        }
     }
 }

@@ -50,6 +50,16 @@ public class Block : MonoBehaviour
         }
     }
 
+    private void OnBecameVisible()
+    {
+        enabled = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        enabled = false;
+    }
+
     private void Update()
     {   
         if (m_HP <= 0)

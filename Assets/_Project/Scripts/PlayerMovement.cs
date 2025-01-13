@@ -5,7 +5,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float m_speed;
+    public float m_Speed;
     [SerializeField] float m_jumpForce;
     [SerializeField] float m_controllerCursorSpeed;
     [SerializeField] InputActionReference m_moveInput;
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         m_Rb = GetComponent<Rigidbody2D>();
-        m_speed += Settings.Instance.settings.m_PlayerSpeed;
+        m_Speed += Settings.Instance.settings.m_PlayerSpeed;
         m_HP = Settings.Instance.settings.m_PlayerHP;
     }
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 _data = m_moveInput.action.ReadValue<Vector2>();
 
-            m_Rb.linearVelocity = new Vector2(_data.x * m_speed, m_Rb.linearVelocity.y);
+            m_Rb.linearVelocity = new Vector2(_data.x * m_Speed, m_Rb.linearVelocity.y);
 
             if (_data.x > 0)
             {

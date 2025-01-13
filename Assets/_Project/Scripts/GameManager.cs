@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
         {
             Settings.Instance.settings.m_YHighScore = Settings.Instance.settings.m_YLevel;
         }
+
+        if(Settings.Instance.settings.m_PlayerHP > Settings.Instance.settings.m_MaxHP)
+        {
+            Settings.Instance.settings.m_PlayerHP = Settings.Instance.settings.m_MaxHP;
+        }
     }
 
     private void Inventory()

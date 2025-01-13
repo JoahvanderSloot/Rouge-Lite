@@ -10,6 +10,5 @@ public class PlayerSettings : ScriptableObject
     public float m_PlayerDamage;
     public int m_YLevel;
     public int m_YHighScore;
-    public int m_MaxHP;
+    public float m_MaxHP;
 }
-    
