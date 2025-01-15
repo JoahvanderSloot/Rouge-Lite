@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -87,6 +88,17 @@ public class PlayerAttack : MonoBehaviour
             {
                 _block.m_LadderPlaced = false;
             }
+        }
+    }
+
+    public IEnumerator FlashColor(Color _color)
+    {
+        SpriteRenderer _renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        if(_renderer != null)
+        {
+            _renderer.color = _color;
+            yield return new WaitForSeconds(Settings.Instance.settings.m_PlayerDamageTick);
+            _renderer.color = Color.white;
         }
     }
 }

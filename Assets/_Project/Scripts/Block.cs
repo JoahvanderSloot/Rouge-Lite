@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEditor.Overlays;
 using UnityEngine;
 using static Unity.Collections.AllocatorManager;
@@ -27,6 +28,10 @@ public class Block : MonoBehaviour
     [Header("Drops")]
     bool m_hasDropped;
     [SerializeField] GameObject m_pickupPref;
+    [SerializeField] GameObject m_zombiePref;
+    [SerializeField] GameObject m_wormPref;
+    [SerializeField] GameObject m_slimePref;
+    [SerializeField] GameObject m_batPref;
 
     private void Start()
     {
@@ -120,6 +125,18 @@ public class Block : MonoBehaviour
             case 0:
                 Instantiate(m_pickupPref, transform.position, Quaternion.identity);
                 break;
+            case 1:
+                Instantiate(m_zombiePref, transform.position, Quaternion.identity);
+                break;
+            case 2:
+                Instantiate(m_wormPref, transform.position, Quaternion.identity);
+                break;
+            case 3:
+                Instantiate(m_slimePref, transform.position, Quaternion.identity);
+                break;
+            case 4:
+                Instantiate(m_batPref, transform.position, Quaternion.identity);
+                break;
             default:
                 break;
         }
@@ -128,7 +145,7 @@ public class Block : MonoBehaviour
 
     private void NewHP()
     {
-        m_MaxHP = Mathf.Max(1, Mathf.CeilToInt(-Settings.Instance.settings.m_YLevel / 5f));
+        m_MaxHP = Mathf.Max(2, Mathf.CeilToInt(-Settings.Instance.settings.m_YLevel / 5f)); 
         m_HP = m_MaxHP;
     }
 

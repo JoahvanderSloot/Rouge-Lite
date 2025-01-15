@@ -139,6 +139,7 @@ public class ShopButtons : MonoBehaviour
         {
             m_gameManager.m_GreenGemCount--;
             Settings.Instance.settings.m_MaxHP++;
+            Settings.Instance.settings.m_PlayerHP++;
             if(Settings.Instance.settings.m_MaxHP == 100)
             {
                 Button _thisButton = gameObject.GetComponent<Button>();

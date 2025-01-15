@@ -21,7 +21,11 @@ public class Buttons : MonoBehaviour
     public void StartNewGame()
     {
         SceneManager.LoadScene("Main");
-        //reset stats
+        Settings.Instance.settings.m_PlayerHP = 1;
+        Settings.Instance.settings.m_PlayerSpeed = 1;
+        Settings.Instance.settings.m_PlayerMiningSpeed = 1;
+        Settings.Instance.settings.m_PlayerDamage = 1;
+        Settings.Instance.settings.m_MaxHP = 50;
     }
 
     public void ContinueOldGame()
@@ -29,7 +33,7 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    public void ExitGame()
+    public void MainMenu()
     {
         SceneManager.LoadScene("Start");
     }

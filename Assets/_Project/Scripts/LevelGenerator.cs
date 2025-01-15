@@ -38,7 +38,7 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int _col = 0; _col < m_columns; _col++)
             {
-                Vector3 _blockPosition = _topLeftPosition + new Vector3(_col * m_spacing, -_row * m_spacing, 0);
+                Vector3 _blockPosition = _topLeftPosition + new Vector3(_col * m_spacing, -_row * m_spacing, 0.1f);
                 Instantiate(m_block, _blockPosition, Quaternion.identity, transform);
             }
         }

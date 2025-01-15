@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
         if(Settings.Instance.settings.m_PlayerHP > Settings.Instance.settings.m_MaxHP)
         {
             Settings.Instance.settings.m_PlayerHP = Settings.Instance.settings.m_MaxHP;
+        }
+
+        if(Settings.Instance.settings.m_PlayerHP <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 

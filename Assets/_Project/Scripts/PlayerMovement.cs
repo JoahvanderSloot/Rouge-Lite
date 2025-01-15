@@ -15,13 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public bool m_IsOnLadder;
     bool m_lookLeft;
     [HideInInspector] public Rigidbody2D m_Rb;
-    public float m_HP;
 
     private void Start()
     {
         m_Rb = GetComponent<Rigidbody2D>();
         m_Speed += Settings.Instance.settings.m_PlayerSpeed;
-        m_HP = Settings.Instance.settings.m_PlayerHP;
     }
 
     private void Update()
@@ -40,11 +38,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-
-        if(m_HP <= 0)
-        {
-            Debug.Log("Game Over");
         }
     }
 

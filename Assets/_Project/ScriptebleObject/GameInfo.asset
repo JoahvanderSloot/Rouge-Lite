@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: GameInfo
   m_EditorClassIdentifier: 
   m_Paused: 1
-  m_PlayerHP: 50
+  m_PlayerHP: 1
   m_PlayerSpeed: 1
   m_PlayerMiningSpeed: 1
   m_PlayerDamage: 1
   m_YLevel: 1
   m_YHighScore: 1
   m_MaxHP: 50
+  m_PlayerDamageTick: 0.1

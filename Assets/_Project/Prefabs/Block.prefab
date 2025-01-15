@@ -114,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 6294511915125701093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.67, y: -0.19, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -146,8 +146,12 @@ MonoBehaviour:
   m_BrokeBlock: 0
   m_LadderPlaced: 0
   m_PlayerInRange: 0
-  m_detectionRange: 2
+  m_detectionRange: 3
   m_pickupPref: {fileID: 3057282582612206317, guid: 4df0d0f56ff70db47bab0dcad878bf00, type: 3}
+  m_zombiePref: {fileID: 3598428341235948963, guid: e50fb2f34f0a4414e8e49f418328813e, type: 3}
+  m_wormPref: {fileID: 3948528325303100826, guid: 2619e599d4d7be5438c50d866c903a15, type: 3}
+  m_slimePref: {fileID: 1492494137337835540, guid: 091e98c36de958845b21d1e59dc98cf0, type: 3}
+  m_batPref: {fileID: 9197792008493561009, guid: 2f26a086018491646b6275effca4cda4, type: 3}
 --- !u!61 &6324106684362565907
 BoxCollider2D:
   m_ObjectHideFlags: 0

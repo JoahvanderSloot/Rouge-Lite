@@ -27,8 +27,21 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyBase _enemyScript = collision.gameObject.GetComponent<EnemyBase>();
+            _enemyScript.m_EnemyHP -= Settings.Instance.settings.m_PlayerDamage;
+            _enemyScript.m_DamageTaken = true;
+
+            Rigidbody2D _enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            Vector2 _knockBackDirection = m_rb.linearVelocity.normalized;
+            _enemyRB.AddForce(_knockBackDirection * _enemyScript.m_knockBackForce, ForceMode2D.Impulse);
+
             Destroy(gameObject);
         }
     }
