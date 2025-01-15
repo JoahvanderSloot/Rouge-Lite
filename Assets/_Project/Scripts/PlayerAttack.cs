@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
     {
         RaycastHit2D _hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, m_ignoreRaycast);
 
-        if (_hit.collider != null && _hit.collider.CompareTag("Brick"))
+        if (_hit.collider != null && _hit.collider.CompareTag("Brick") && m_gameManager.m_currentItem == GameManager.Item.Ladder)
         {
             Block _block = _hit.collider.gameObject.GetComponent<Block>();
             if (_block.m_BrokeBlock && _block.m_PlayerInRange && _block.m_LadderPlaced)
