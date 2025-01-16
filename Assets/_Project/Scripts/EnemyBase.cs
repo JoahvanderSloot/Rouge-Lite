@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    [Header("Enemy Base")]
     public float m_EnemyHP;
     public float m_knockBackForce;
     protected bool m_attack;

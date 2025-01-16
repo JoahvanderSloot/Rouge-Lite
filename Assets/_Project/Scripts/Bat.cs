@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Bat : EnemyBase
 {
+    [Header("Slime")]
     [SerializeField] private Sprite m_wingsOpen;
     [SerializeField] private Sprite m_wingsClose;
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Slime : EnemyBase
 {
+    [Header("Slime")]
     [SerializeField] float m_jumpForce;
     [SerializeField] Sprite m_idleSprite;
     [SerializeField] Sprite m_hitSprite;

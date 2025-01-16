@@ -79,16 +79,6 @@ public class Block : MonoBehaviour
             }
         }
 
-        if (m_playerTransform != null)
-        {
-            float _distanceToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
-            m_PlayerInRange = _distanceToPlayer <= m_detectionRange;
-        }
-        else
-        {
-            m_PlayerInRange = false;
-        }
-
         if (m_PlayerInRange)
         {
             UpdateBreakScale();
@@ -100,6 +90,16 @@ public class Block : MonoBehaviour
         else
         {
             m_hover.SetActive(false);
+        }
+
+        if (m_playerTransform != null)
+        {
+            float _distanceToPlayer = Vector3.Distance(transform.position, m_playerTransform.position);
+            m_PlayerInRange = _distanceToPlayer <= m_detectionRange;
+        }
+        else
+        {
+            m_PlayerInRange = false;
         }
     }
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Zombie : EnemyBase
 {
+    [Header("Zombie")]
     [SerializeField] Sprite m_idleSprite;
     [SerializeField] Sprite m_attackSprite;
 

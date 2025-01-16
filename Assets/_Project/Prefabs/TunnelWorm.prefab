@@ -129,6 +129,7 @@ MonoBehaviour:
   m_hpPickup: {fileID: 7674982166575621065, guid: 20dbb5495761ea34488ca11eb65e31e8, type: 3}
   m_DamageTaken: 0
   m_burstSpeed: 0.75
+  m_speedAmplitude: 3
   m_idleSprite: {fileID: 8656915679823141834, guid: b3b24c4f18f7a894ca9d757cd2cd2ae4, type: 3}
   m_attackSprite: {fileID: 8656915679823141834, guid: b6419b241fdb46a4a85aa98b36cd2c33, type: 3}
 --- !u!1 &7912015850758548829
