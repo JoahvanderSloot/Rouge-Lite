@@ -25,7 +25,7 @@ public class Bat : EnemyBase
 
         float _yLevelFactor = Settings.Instance.settings.m_YLevel / 4f;
 
-        m_enemySpeed = Mathf.Clamp(3f - _yLevelFactor, 2f, 8f);
+        m_enemySpeed = Mathf.Clamp(3f - _yLevelFactor, 2f, 5f);
         m_EnemyHP = Mathf.Clamp(1f - _yLevelFactor, 1f, 5f);
     }
 

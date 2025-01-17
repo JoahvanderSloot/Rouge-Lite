@@ -19,7 +19,7 @@ public class TunnelWorm : EnemyBase
 
         float _yLevelFactor = Settings.Instance.settings.m_YLevel / 4f;
 
-        m_baseSpeed = Mathf.Clamp(3f - _yLevelFactor, 2f, 5f);
+        m_baseSpeed = Mathf.Clamp(3f - _yLevelFactor, 2f, 3.5f);
         m_enemySpeed = m_baseSpeed;
         m_EnemyHP = Mathf.Clamp(5f - _yLevelFactor, 5f, 25f);
         m_enemyDamage = Mathf.Clamp(Mathf.Round(2f - _yLevelFactor), 2f, 10f);

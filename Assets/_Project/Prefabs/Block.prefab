@@ -152,6 +152,7 @@ MonoBehaviour:
   m_wormPref: {fileID: 3948528325303100826, guid: 2619e599d4d7be5438c50d866c903a15, type: 3}
   m_slimePref: {fileID: 1492494137337835540, guid: 091e98c36de958845b21d1e59dc98cf0, type: 3}
   m_batPref: {fileID: 9197792008493561009, guid: 2f26a086018491646b6275effca4cda4, type: 3}
+  m_fireGiantPref: {fileID: 7254855371517948014, guid: 948b2a133f4e95b4489d77cf6a93260d, type: 3}
 --- !u!61 &6324106684362565907
 BoxCollider2D:
   m_ObjectHideFlags: 0

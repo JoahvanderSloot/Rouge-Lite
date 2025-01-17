@@ -1,7 +1,4 @@
-using NUnit.Framework;
-using UnityEditor.Overlays;
 using UnityEngine;
-using static Unity.Collections.AllocatorManager;
 
 public class Block : MonoBehaviour
 {
@@ -32,6 +29,7 @@ public class Block : MonoBehaviour
     [SerializeField] GameObject m_wormPref;
     [SerializeField] GameObject m_slimePref;
     [SerializeField] GameObject m_batPref;
+    [SerializeField] GameObject m_fireGiantPref;
 
     private void Start()
     {
@@ -119,27 +117,65 @@ public class Block : MonoBehaviour
 
     private void ChoseDrop()
     {
-        int _randomDrop = Random.Range(0, 5);
-        switch (_randomDrop)
+        float[] _baseDropRates = new float[]
         {
-            case 0:
-                Instantiate(m_pickupPref, transform.position, Quaternion.identity);
-                break;
-            case 1:
-                Instantiate(m_zombiePref, transform.position, Quaternion.identity);
-                break;
-            case 2:
-                Instantiate(m_wormPref, transform.position, Quaternion.identity);
-                break;
-            case 3:
-                Instantiate(m_slimePref, transform.position, Quaternion.identity);
-                break;
-            case 4:
-                Instantiate(m_batPref, transform.position, Quaternion.identity);
-                break;
-            default:
-                break;
+        25f, // Gem (most common)
+        21f, // Zombie
+        17f, // Slime
+        15f,  // Bat
+        15f,  // Worm
+        7f   // Fire Giant (rarest)
+        };
+
+        float _noDropBaseWeight = 150f;
+
+        float _adjustedNoDropWeight = _noDropBaseWeight + Mathf.Abs(Settings.Instance.settings.m_YLevel * 10f);
+
+        float[] _dropRates = new float[_baseDropRates.Length + 1];
+        _baseDropRates.CopyTo(_dropRates, 0);
+        _dropRates[_dropRates.Length - 1] = _adjustedNoDropWeight;
+
+        float _totalWeight = 0f;
+        foreach (float _weight in _dropRates)
+        {
+            _totalWeight += _weight;
         }
+
+        float _randomValue = Random.Range(0f, _totalWeight);
+        float _cumulativeWeight = 0f;
+
+        for (int i = 0; i < _dropRates.Length; i++)
+        {
+            _cumulativeWeight += _dropRates[i];
+            if (_randomValue <= _cumulativeWeight)
+            {
+                switch (i)
+                {
+                    case 0:
+                        Instantiate(m_pickupPref, transform.position, Quaternion.identity);
+                        break;
+                    case 1:
+                        Instantiate(m_zombiePref, transform.position, Quaternion.identity);
+                        break;
+                    case 2:
+                        Instantiate(m_slimePref, transform.position, Quaternion.identity);
+                        break;
+                    case 3:
+                        Instantiate(m_batPref, transform.position, Quaternion.identity);
+                        break;
+                    case 4:
+                        Instantiate(m_wormPref, transform.position, Quaternion.identity);
+                        break;
+                    case 5:
+                        Instantiate(m_fireGiantPref, transform.position, Quaternion.identity);
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
+        }
+
         m_hasDropped = true;
     }
 

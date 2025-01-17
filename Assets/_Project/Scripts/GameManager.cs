@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     public int m_GreenGemCount;
     public int m_RedGemCount;
     public int m_YellowGemCount;
+
+    [Header("Other")]
+    [SerializeField] Image m_gameOverIMG;
 
     public enum Item
     {
@@ -36,6 +40,8 @@ public class GameManager : MonoBehaviour
         m_BlueGemCount = 0;
         m_RedGemCount = 0;
         m_YellowGemCount = 0;
+
+        m_gameOverIMG.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -61,9 +67,17 @@ public class GameManager : MonoBehaviour
             Settings.Instance.settings.m_PlayerHP = Settings.Instance.settings.m_MaxHP;
         }
 
-        if(Settings.Instance.settings.m_PlayerHP <= 0)
+        if (Settings.Instance.settings.m_PlayerHP <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            m_gameOverIMG.gameObject.SetActive(true);
+            Color _color = m_gameOverIMG.color;
+            _color.a += Time.deltaTime * 4.5f;
+            m_gameOverIMG.color = _color;
+
+            if(_color.a >= 1)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 

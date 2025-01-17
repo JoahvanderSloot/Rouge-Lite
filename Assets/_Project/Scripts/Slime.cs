@@ -16,7 +16,7 @@ public class Slime : EnemyBase
 
         float _yLevelFactor = Settings.Instance.settings.m_YLevel / 4f;
 
-        m_enemySpeed = Mathf.Clamp(1f - _yLevelFactor, 1f, 5f);
+        m_enemySpeed = Mathf.Clamp(1f - _yLevelFactor, 1f, 2.5f);
         m_EnemyHP = Mathf.Clamp(3f - _yLevelFactor, 1f, 10f);
         m_enemyDamage = Mathf.Clamp(Mathf.Round(1f - _yLevelFactor), 1f, 3f);
     }
