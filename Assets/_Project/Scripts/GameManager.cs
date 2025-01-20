@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] Image m_gameOverIMG;
+    float m_gameOverTimer = 0;
 
     public enum Item
     {
@@ -71,10 +72,11 @@ public class GameManager : MonoBehaviour
         {
             m_gameOverIMG.gameObject.SetActive(true);
             Color _color = m_gameOverIMG.color;
-            _color.a += Time.deltaTime * 4.5f;
+            m_gameOverTimer += Time.deltaTime * 3f;
+            _color.a = m_gameOverTimer;
             m_gameOverIMG.color = _color;
 
-            if(_color.a >= 1)
+            if(m_gameOverTimer >= 3)
             {
                 SceneManager.LoadScene("GameOver");
             }

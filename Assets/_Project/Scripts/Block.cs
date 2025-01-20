@@ -53,16 +53,6 @@ public class Block : MonoBehaviour
         }
     }
 
-    private void OnBecameVisible()
-    {
-        enabled = true;
-    }
-
-    private void OnBecameInvisible()
-    {
-        enabled = false;
-    }
-
     private void Update()
     {   
         if (m_HP <= 0)
@@ -119,12 +109,12 @@ public class Block : MonoBehaviour
     {
         float[] _baseDropRates = new float[]
         {
-        25f, // Gem (most common)
-        21f, // Zombie
-        17f, // Slime
-        15f,  // Bat
-        15f,  // Worm
-        7f   // Fire Giant (rarest)
+            25f, // Gem (most common)
+            21f, // Zombie
+            17f, // Slime
+            15f, // Bat
+            15f, // Worm
+            7f   // Fire Giant (rarest)
         };
 
         float _noDropBaseWeight = 150f;
@@ -170,6 +160,7 @@ public class Block : MonoBehaviour
                         Instantiate(m_fireGiantPref, transform.position, Quaternion.identity);
                         break;
                     default:
+                        //spawn nothing
                         break;
                 }
                 break;
