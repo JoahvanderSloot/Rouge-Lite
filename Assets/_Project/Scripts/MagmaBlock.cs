@@ -9,10 +9,22 @@ public class MagmaBlock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(m_damagePlayer == null)
+            if (m_damagePlayer == null)
             {
                 m_damagePlayer = StartCoroutine(DamagePlayer(collision.gameObject.GetComponent<PlayerAttack>()));
             }
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyBase _enemyBase = collision.gameObject.GetComponent<EnemyBase>();
+            if (_enemyBase.m_knockBackForce != 0)
+            {
+                _enemyBase.m_EnemyHP = 0;
+            }
+        }
+        else if(!collision.gameObject.CompareTag("Brick"))
+        {
+           Destroy(collision.gameObject);
         }
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.linearVelocityX = 0;

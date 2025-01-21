@@ -55,10 +55,6 @@ public abstract class EnemyBase : MonoBehaviour
     {
         DropHealthPickup();
         Instantiate(m_deathParticles, transform.position, Quaternion.identity);
-        //vervangen voor functie vanuit speler
-        GameObject _player = GameObject.FindWithTag("Player");
-        SpriteRenderer _playerRenderer = _player.GetComponentInChildren<SpriteRenderer>();
-        _playerRenderer.color = Color.white;
         Destroy(gameObject);
     }
 
@@ -77,7 +73,6 @@ public abstract class EnemyBase : MonoBehaviour
         {
             if (m_damageCoroutine == null)
             {
-                //hier func dmg in player van maken
                 m_damageCoroutine = StartCoroutine(DamagePlayer(collision.gameObject));
                 m_attack = true;
             }

@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TunnelWormAttack_0: 8656915679823141834
+      TunnelWormAttack_1: -6522616927508990457
+      TunnelWormAttack_2: -185608550315088005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
