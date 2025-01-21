@@ -27,9 +27,9 @@ public class FireBall : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerAttack _playerAttack = collision.gameObject.GetComponent<PlayerAttack>();
-            StartCoroutine(_playerAttack.FlashColor(Color.red));
+            _playerAttack.StartPlayerFlash(Color.red);
             Settings.Instance.settings.m_PlayerHP -= m_Damage;
-            TurnOff();
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Brick"))
         {
@@ -39,16 +39,8 @@ public class FireBall : MonoBehaviour
                 _block.m_HP -= m_Damage;
                 _block.m_BrokeBlock = true;
                 _block.m_PlayerInRange = true;
-                TurnOff();
+                Destroy(gameObject);
             }
         }
-    }
-
-    private void TurnOff()
-    {
-        SpriteRenderer _sprite = gameObject.GetComponent<SpriteRenderer>();
-        _sprite.enabled = false;
-        Collider2D _collider = gameObject.GetComponent<Collider2D>();
-        _collider.enabled = false;
     }
 }

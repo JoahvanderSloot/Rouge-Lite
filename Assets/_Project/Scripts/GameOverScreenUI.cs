@@ -7,6 +7,6 @@ public class GameOverScreenUI : MonoBehaviour
 
     private void Start()
     {
-        m_yLevelHighscore.text = "Y Level highscore: " + Settings.Instance.settings.m_YHighScore.ToString();
+        m_yLevelHighscore.text = "Depth highscore: " + Settings.Instance.settings.m_YHighScore.ToString();
     }
 }

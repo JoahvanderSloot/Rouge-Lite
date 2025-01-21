@@ -91,7 +91,12 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public IEnumerator FlashColor(Color _color)
+    public void StartPlayerFlash(Color _color)
+    {
+        StartCoroutine(FlashColor(_color));
+    }
+
+    private IEnumerator FlashColor(Color _color)
     {
         SpriteRenderer _renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
         if(_renderer != null)

@@ -30,6 +30,7 @@ public class Block : MonoBehaviour
     [SerializeField] GameObject m_slimePref;
     [SerializeField] GameObject m_batPref;
     [SerializeField] GameObject m_fireGiantPref;
+    [SerializeField] GameObject m_magmaBlock;
 
     private void Start()
     {
@@ -109,9 +110,10 @@ public class Block : MonoBehaviour
     {
         float[] _baseDropRates = new float[]
         {
-            25f, // Gem (most common)
-            21f, // Zombie
-            17f, // Slime
+            20f, // Gem (most common)
+            10f, // Magma block
+            17f, // Zombie
+            15f, // Slime
             15f, // Bat
             15f, // Worm
             7f   // Fire Giant (rarest)
@@ -145,18 +147,21 @@ public class Block : MonoBehaviour
                         Instantiate(m_pickupPref, transform.position, Quaternion.identity);
                         break;
                     case 1:
-                        Instantiate(m_zombiePref, transform.position, Quaternion.identity);
+                        Instantiate(m_magmaBlock, transform.position, Quaternion.identity);
                         break;
                     case 2:
-                        Instantiate(m_slimePref, transform.position, Quaternion.identity);
+                        Instantiate(m_zombiePref, transform.position, Quaternion.identity);
                         break;
                     case 3:
-                        Instantiate(m_batPref, transform.position, Quaternion.identity);
+                        Instantiate(m_slimePref, transform.position, Quaternion.identity);
                         break;
                     case 4:
-                        Instantiate(m_wormPref, transform.position, Quaternion.identity);
+                        Instantiate(m_batPref, transform.position, Quaternion.identity);
                         break;
                     case 5:
+                        Instantiate(m_wormPref, transform.position, Quaternion.identity);
+                        break;
+                    case 6:
                         Instantiate(m_fireGiantPref, transform.position, Quaternion.identity);
                         break;
                     default:

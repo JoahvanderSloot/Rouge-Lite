@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         if (Settings.Instance.settings.m_PlayerHP <= 0)
         {
+            Settings.Instance.settings.m_PlayerHP = 0;
             m_gameOverIMG.gameObject.SetActive(true);
             Color _color = m_gameOverIMG.color;
             m_gameOverTimer += Time.deltaTime * 3f;

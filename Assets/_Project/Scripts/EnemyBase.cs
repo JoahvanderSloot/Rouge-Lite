@@ -118,7 +118,7 @@ public abstract class EnemyBase : MonoBehaviour
                 Settings.Instance.settings.m_PlayerHP -= m_enemyDamage;
 
                 PlayerAttack _playerAttack = _player.GetComponent<PlayerAttack>();
-                StartCoroutine(_playerAttack.FlashColor(Color.red));
+                _playerAttack.StartPlayerFlash(Color.red);
             }
             yield return new WaitForSeconds(m_enemyAttackSpeed);
         }

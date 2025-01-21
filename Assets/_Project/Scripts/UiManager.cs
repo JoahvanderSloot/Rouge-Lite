@@ -40,7 +40,7 @@ public class UiManager : MonoBehaviour
     private void Update()
     {
         m_selected.transform.position = m_mainItems[(int)m_gameManager.m_currentItem].transform.position;
-        m_yLevelText.text = "Y: " + Settings.Instance.settings.m_YLevel.ToString();
+        m_yLevelText.text = "Depth: " + Settings.Instance.settings.m_YLevel.ToString();
 
         m_blueGemText.text = m_gameManager.m_BlueGemCount.ToString();
         m_greenGemText.text = m_gameManager.m_GreenGemCount.ToString();
