@@ -4,9 +4,15 @@ using UnityEngine;
 public class MagmaBlock : MonoBehaviour
 {
     Coroutine m_damagePlayer;
+    [SerializeField] LayerMask m_ground;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (((1 << collision.gameObject.layer) & m_ground) != 0)
+        {
+            return;
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             if (m_damagePlayer == null)
@@ -22,13 +28,15 @@ public class MagmaBlock : MonoBehaviour
                 _enemyBase.m_EnemyHP = 0;
             }
         }
-        else if(!collision.gameObject.CompareTag("Brick"))
+        else
         {
-           Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
+
         Rigidbody2D _rb = GetComponent<Rigidbody2D>();
         _rb.linearVelocityX = 0;
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
