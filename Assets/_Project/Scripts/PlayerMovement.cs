@@ -114,18 +114,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveCursorWithGamepad()
     {
-        Vector2 gamepadInput = m_cursorInput.action.ReadValue<Vector2>();
+        Vector2 _gamepadInput = m_cursorInput.action.ReadValue<Vector2>();
 
-        float scaleFactor = m_controllerCursorSpeed / 100;
+        float _scaleFactor = m_controllerCursorSpeed / 100;
 
-        Vector3 currentCursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 _currentCursorPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-        Vector3 newCursorPosition = currentCursorPosition + new Vector3(
-            gamepadInput.x * scaleFactor,
-            gamepadInput.y * scaleFactor,
+        Vector3 _newCursorPosition = _currentCursorPosition + new Vector3(
+            _gamepadInput.x * _scaleFactor,
+            _gamepadInput.y * _scaleFactor,
             0f
         );
 
-        Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(newCursorPosition));
+        Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(_newCursorPosition));
     }
 }

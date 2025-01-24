@@ -96,19 +96,19 @@
                 },
                 {
                     "name": "",
-                    "id": "a8363819-aedc-4ce9-9267-1ebb9692123c",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "a78b5747-6a52-4e11-8a33-76eab8d253d7",
+                    "path": "<Mouse>/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a78b5747-6a52-4e11-8a33-76eab8d253d7",
-                    "path": "<Mouse>/press",
+                    "id": "55070a5c-0779-4f6f-a62c-5e60bb6635fd",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -317,7 +317,7 @@
                 {
                     "name": "",
                     "id": "e5a7d5f4-87c4-4a58-93bb-3b73da7daff2",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

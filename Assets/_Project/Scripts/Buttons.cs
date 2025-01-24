@@ -36,6 +36,7 @@ public class Buttons : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("Start");
+        Settings.Instance.settings.m_Paused = false;
     }
 
     public void QuitGame()
@@ -45,10 +46,10 @@ public class Buttons : MonoBehaviour
         #endif
         #if (UNITY_EDITOR)
             UnityEditor.EditorApplication.isPlaying = false;
-        #elif (UNITY_STANDALONE)
+#elif (UNITY_STANDALONE)
              Application.Quit();
-        #elif (UNITY_WEBGL)
-             Application.OpenURL("itch url ");
-        #endif
+#elif (UNITY_WEBGL)
+             Application.OpenURL("https://joahvds.itch.io/mine-adventure");
+#endif
     }
 }
